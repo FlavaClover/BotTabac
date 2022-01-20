@@ -12,7 +12,7 @@ class ProductForm(ModelForm):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name_external', 'price', 'count')
+    list_display = ('name_external', 'price', 'count', 'img_name')
     search_fields = ('name_external', 'name_internal', 'price', 'count')
 
     fieldsets = (

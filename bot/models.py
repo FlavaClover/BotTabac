@@ -21,10 +21,12 @@ class Product(models.Model):
     name_internal = models.CharField(max_length=150, null=False, unique=True)
     count = models.IntegerField(null=False, validators=[validate_positive])
     price = models.IntegerField(null=False, validators=[validate_positive])
+    img_name = models.CharField(null=True, max_length=150)
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         self.name_internal = str.lower(self.name_external)
+        self.img_name = self.name_internal.replace(' ', '_')
         super().save()
 
     def __str__(self):
